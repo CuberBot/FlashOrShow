@@ -2,6 +2,8 @@ let {createBotServer, EventHandler, Msg} = require('pbbot')
 
 let port = 8081
 
+const countLimit = 5 // 最多发送5张图
+
 console.log("开始启动")
 
 EventHandler.handleConnect = async (bot) => {
@@ -43,6 +45,7 @@ EventHandler.handleGroupMessage = async (bot, event) => {
   if (rawMsg.startsWith("闪图")) {
     event.message
       .filter(m => m.type === "image")
+      .slice(0, countLimit)
       .forEach(m =>
         bot.sendGroupMessage(groupId, Msg.builder().flash(m.data["url"]))
       )
@@ -52,11 +55,12 @@ EventHandler.handleGroupMessage = async (bot, event) => {
   if (rawMsg.startsWith("秀")) {
     // rawMsg = rawMsg.substring("秀".length) // 不用字符串处理更方便，直接用消息数组
     showMap.forEach(((effectId, name) => {
-      if (rawMsg.startsWith(name)){
+      if (rawMsg.startsWith(name)) {
         event.message
           .filter(m => m.type === "image")
+          .slice(0, countLimit)
           .forEach(m =>
-            bot.sendGroupMessage(groupId, Msg.builder().show(m.data["url"],effectId))
+            bot.sendGroupMessage(groupId, Msg.builder().show(m.data["url"], effectId))
           )
       }
     }))
