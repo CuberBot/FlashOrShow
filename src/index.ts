@@ -50,7 +50,7 @@ EventHandler.handleGroupMessage = async (bot, event) => {
 
 
   if (rawMsg.startsWith("秀")) {
-    rawMsg = rawMsg.substring("秀".length)
+    // rawMsg = rawMsg.substring("秀".length) // 不用字符串处理更方便，直接用消息数组
     showMap.forEach(((effectId, name) => {
       if (rawMsg.startsWith(name)){
         event.message
