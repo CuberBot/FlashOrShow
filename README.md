@@ -1,7 +1,7 @@
 # FlashOrShow使用说明
-闪秀图
+基于js-pbbot的闪秀图
 
-创建nodejs项目
+##创建nodejs项目
 
 安装`npm install pbbot`
 
