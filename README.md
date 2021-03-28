@@ -1,6 +1,6 @@
 # FlashOrShow使用说明
 
-基于js-pbbot的闪秀图
+基于[js-pbbot](https://github.com/CuberBot/js-pbbot)的闪秀图
 
 ## 指令说明
 
